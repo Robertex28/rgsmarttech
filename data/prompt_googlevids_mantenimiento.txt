@@ -1,0 +1,88 @@
+PROMPT GOOGLE VIDS - VIDEO SEÑALES DE MANTENIMIENTO LAPTOP
+R.G Smart Technology | Roberto Gil
+============================================================
+
+Crea un video educativo vertical (9:16) para redes sociales 
+de 60 segundos sobre "Cómo saber si tu laptop necesita 
+mantenimiento urgente" para la empresa R.G Smart Technology 
+– Soluciones Tecnológicas de Barquisimeto, Venezuela.
+
+ESTRUCTURA DEL VIDEO:
+
+[Escena 1 – 0 a 5 seg] 
+Pantalla de impacto con fondo azul oscuro y texto animado:
+"¿Tu laptop te está enviando señales de alerta?" 
+con ícono de laptop parpadeando.
+
+[Escena 2 – 5 a 15 seg]
+Texto: "SEÑAL #1: Se calienta demasiado"
+Descripción: "Si tu laptop quema al tacto o el ventilador 
+suena constantemente, el polvo acumulado está sofocando 
+los componentes internos."
+Mostrar imagen de laptop con vapor de calor.
+
+[Escena 3 – 15 a 25 seg]
+Texto: "SEÑAL #2: Va muy lenta al encender"
+Descripción: "Si tardas más de 2 minutos en arrancar, 
+es señal de que necesita optimización de sistema 
+o cambio de disco a SSD."
+Mostrar barra de carga lenta en pantalla.
+
+[Escena 4 – 25 a 35 seg]
+Texto: "SEÑAL #3: La batería dura menos de 1 hora"
+Descripción: "Una batería degradada afecta el rendimiento 
+general del equipo y puede dañar la placa madre 
+con fluctuaciones de voltaje."
+Mostrar ícono de batería casi vacía.
+
+[Escena 5 – 35 a 50 seg]
+Texto grande en pantalla: 
+"¡No esperes a que sea demasiado tarde!"
+Subtítulo: "El mantenimiento preventivo alarga la vida 
+de tu equipo hasta 5 años más."
+Fondo oscuro con efecto de circuitos tecnológicos.
+
+[Escena 6 – 50 a 60 seg – CIERRE]
+Fondo blanco con logo R.G Smart Technology centrado.
+Texto: "Llévanos tu laptop hoy"
+Datos de contacto animados uno por uno:
+📱 0412-066-6045
+📍 Barquisimeto, Carrera 25 entre calles 26 y 27
+🌐 rgsmarttech.netlify.app
+Botón verde final: "ESCRÍBENOS POR WHATSAPP"
+
+ESTILO VISUAL:
+- Colores principales: azul #1560D4, rojo #E53935, blanco
+- Tipografía bold, grande, impactante
+- Transiciones rápidas y dinámicas
+- Música de fondo tecnológica y energética
+- Texto en español venezolano, tono directo y confiable
+- Formato vertical 1080x1920 para Instagram Reels y TikTok
+
+============================================================
+SCRIPT DE NARRACIÓN (voz en off opcional):
+
+¿Tu laptop te está enviando señales de alerta?
+
+Señal número uno: se calienta demasiado.
+Si tu laptop quema al tacto o el ventilador suena sin parar,
+el polvo acumulado está sofocando los componentes internos.
+
+Señal número dos: va muy lenta al encender.
+Si tardas más de dos minutos en arrancar, necesitas
+optimización del sistema o un cambio de disco a SSD.
+
+Señal número tres: la batería dura menos de una hora.
+Una batería degradada puede dañar tu placa madre
+con fluctuaciones de voltaje.
+
+¡No esperes a que sea demasiado tarde!
+El mantenimiento preventivo puede alargar la vida
+de tu equipo hasta cinco años más.
+
+En R.G Smart Technology somos tus especialistas en Barquisimeto.
+Llámanos al 0412-066-6045 o visítanos en la carrera 25
+entre calles 26 y 27.
+¡Tu equipo siempre merece una segunda oportunidad!
+
+============================================================

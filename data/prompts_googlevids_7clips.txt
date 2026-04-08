@@ -1,0 +1,77 @@
+PROMPTS GOOGLE VIDS - 7 CLIPS DE 8 SEGUNDOS
+Video: "Señales de que tu laptop necesita mantenimiento"
+R.G Smart Technology | Roberto Gil
+============================================================
+
+INSTRUCCIONES:
+1. Ve a Google Vids (vids.google.com)
+2. Crea un video NUEVO por cada clip
+3. Pega el prompt correspondiente
+4. Descarga cada clip de 8 segundos
+5. Únelos en Canva (Video para celular) en orden
+
+============================================================
+
+CLIP 1 - GANCHO (0-8 seg)
+--------------------------
+Video corto impactante. Fondo azul oscuro tecnológico. 
+Texto animado grande en blanco: "¿Tu laptop te está 
+enviando señales de ALERTA?" con ícono de laptop 
+parpadeando en rojo. Estilo dinámico y urgente.
+
+CLIP 2 - SEÑAL #1 (8-16 seg)
+-----------------------------
+Video educativo tecnológico. Mostrar laptop con ventilador 
+girando rápido y humo/calor. Texto en pantalla: 
+"SEÑAL #1: Se calienta demasiado 🔥" 
+Subtítulo: "El polvo destruye tus componentes internos"
+Colores azul y rojo. Fondo oscuro.
+
+CLIP 3 - SEÑAL #2 (16-24 seg)
+------------------------------
+Video tecnológico. Mostrar pantalla de laptop con barra 
+de carga muy lenta. Texto: "SEÑAL #2: Arranca muy lento ⏳"
+Subtítulo: "Más de 2 minutos = disco duro en peligro"
+Fondo oscuro azul marino. Texto blanco bold.
+
+CLIP 4 - SEÑAL #3 (24-32 seg)
+------------------------------
+Video tecnológico. Mostrar ícono de batería casi vacía 
+parpadeando. Texto: "SEÑAL #3: Batería dura menos de 1 hora 🔋"
+Subtítulo: "Puede dañar tu placa madre permanentemente"
+Colores rojo y blanco sobre fondo oscuro.
+
+CLIP 5 - SOLUCIÓN (32-40 seg)
+------------------------------
+Video motivacional tecnológico. Técnico trabajando 
+en laptop con herramientas. Texto bold: 
+"¡NOSOTROS LO SOLUCIONAMOS!" 
+Subtítulo: "Mantenimiento preventivo profesional"
+Colores azul eléctrico y blanco. Energético.
+
+CLIP 6 - GARANTÍA (40-48 seg)
+------------------------------
+Video confianza y profesionalismo. Fondo con circuitos 
+tecnológicos azules. Texto: 
+"✅ Diagnóstico GRATIS"
+"✅ Garantía por escrito"
+"✅ Técnico certificado"
+Lista animada una por una. Fondo oscuro elegante.
+
+CLIP 7 - CIERRE/CTA (48-56 seg)
+--------------------------------
+Video llamada a la acción. Fondo blanco limpio.
+Texto rojo grande: "¡Escríbenos HOY!"
+Datos animados: 📱 0412-066-6045
+📍 Barquisimeto · Carrera 25 entre calles 26 y 27
+🌐 rgsmarttech.netlify.app
+Botón verde WhatsApp pulsando al final.
+
+============================================================
+PASO FINAL: Unir clips en Canva
+- Abre Canva → Nuevo diseño → Video para celular (1080x1920)
+- Sube los 7 clips en orden
+- Ajusta cada uno a 8 segundos
+- Agrega el outro_video.html como imagen final
+- Exporta como MP4
+============================================================

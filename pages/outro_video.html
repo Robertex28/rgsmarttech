@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1080"/>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    width:1080px;height:1920px;overflow:hidden;
+    font-family:'Barlow Condensed',sans-serif;
+    background:#06080F;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    position:relative;
+  }
+  body::before{
+    content:'';position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(21,96,212,0.06) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(21,96,212,0.06) 1px,transparent 1px);
+    background-size:60px 60px;
+  }
+  body::after{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(21,96,212,0.15),transparent 70%);
+  }
+
+  /* Decoraciones de esquina */
+  .corner{position:absolute;width:80px;height:80px;z-index:5}
+  .tl{top:30px;left:30px;border-top:5px solid #1560D4;border-left:5px solid #1560D4;border-radius:10px 0 0 0}
+  .tr{top:30px;right:30px;border-top:5px solid #E53935;border-right:5px solid #E53935;border-radius:0 10px 0 0}
+  .bl{bottom:30px;left:30px;border-bottom:5px solid #E53935;border-left:5px solid #E53935;border-radius:0 0 0 10px}
+  .br{bottom:30px;right:30px;border-bottom:5px solid #1560D4;border-right:5px solid #1560D4;border-radius:0 0 10px 0}
+
+  .wrap{
+    position:relative;z-index:10;
+    display:flex;flex-direction:column;
+    align-items:center;gap:0;
+    width:960px;
+  }
+
+  /* Logo section */
+  .logo-box{
+    background:#FFFFFF;
+    border-radius:24px 24px 0 0;
+    padding:50px 60px 40px;
+    width:100%;
+    display:flex;flex-direction:column;align-items:center;gap:0;
+    border:3px solid #1560D4;border-bottom:none;
+  }
+  .logo-box img{height:110px;width:auto;max-width:700px;object-fit:contain}
+
+  /* Divider */
+  .div{height:6px;width:100%;background:linear-gradient(90deg,#1560D4,#E53935,#1560D4)}
+
+  /* CTA pregunta */
+  .question-box{
+    background:linear-gradient(135deg,#1560D4,#0A3A8A);
+    width:100%;padding:44px 60px;text-align:center;
+  }
+  .q-main{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:58px;font-weight:900;color:#FFFFFF;
+    line-height:1.1;text-transform:uppercase;letter-spacing:1px;
+  }
+  .q-main span{color:#FFD700}
+  .q-sub{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:38px;font-weight:700;color:rgba(255,255,255,0.85);
+    margin-top:12px;text-transform:uppercase;letter-spacing:1px;
+  }
+
+  /* Contactos */
+  .contacts-box{
+    background:#FFFFFF;
+    width:100%;padding:44px 60px;
+    display:flex;flex-direction:column;gap:28px;
+  }
+  .c-item{
+    display:flex;align-items:center;gap:24px;
+    padding:20px 28px;
+    background:#F8FAFF;border-radius:16px;
+    border-left:6px solid #1560D4;
+  }
+  .c-item.red{border-left-color:#E53935}
+  .c-item.green{border-left-color:#25D366}
+  .c-item.ig{border-left-color:#C13584}
+  .c-ico{font-size:44px;flex-shrink:0;width:56px;text-align:center}
+  .c-text{display:flex;flex-direction:column;gap:4px}
+  .c-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:20px;letter-spacing:3px;color:#6B7280;text-transform:uppercase;
+  }
+  .c-value{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:38px;font-weight:800;color:#111827;letter-spacing:.5px;
+  }
+  .c-value.blue{color:#1560D4}
+  .c-value.red{color:#E53935}
+  .c-value.ig{color:#C13584}
+  .c-value.fb{color:#1877F2}
+
+  /* Botón WA */
+  .wa-btn{
+    background:linear-gradient(135deg,#128C7E,#25D366);
+    width:100%;padding:50px 60px;
+    border-radius:0 0 24px 24px;
+    display:flex;align-items:center;justify-content:center;gap:24px;
+    border:3px solid #25D366;border-top:none;
+  }
+  .wa-btn svg{width:56px;height:56px;flex-shrink:0}
+  .wa-text{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:50px;font-weight:900;color:#FFFFFF;
+    text-transform:uppercase;letter-spacing:1px;line-height:1.1;
+    text-align:left;
+  }
+  .wa-text small{
+    display:block;font-size:30px;font-weight:600;
+    color:rgba(255,255,255,0.85);letter-spacing:2px;
+  }
+
+  /* Dirección bottom */
+  .address{
+    margin-top:32px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:16px;padding:24px 40px;
+    display:flex;align-items:center;gap:16px;
+    width:100%;
+  }
+  .address span{font-size:36px}
+  .address p{
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:28px;font-weight:600;color:rgba(255,255,255,0.8);
+    letter-spacing:.5px;line-height:1.3;
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="corner tl"></div>
+<div class="corner tr"></div>
+<div class="corner bl"></div>
+<div class="corner br"></div>
+
+<div class="wrap">
+
+  <!-- Logo -->
+  <div class="logo-box">
+    <img id="logo" src="logo_crop.png" alt="R.G Smart Technology"/>
+  </div>
+
+  <div class="div"></div>
+
+  <!-- CTA Pregunta -->
+  <div class="question-box">
+    <div class="q-main">¿Tu laptop tiene<br><span>este problema?</span></div>
+    <div class="q-sub">¡Nosotros lo solucionamos!</div>
+  </div>
+
+  <div class="div"></div>
+
+  <!-- Contactos -->
+  <div class="contacts-box">
+    <div class="c-item green">
+      <div class="c-ico">📱</div>
+      <div class="c-text">
+        <div class="c-label">WhatsApp</div>
+        <div class="c-value">0412-066-6045</div>
+      </div>
+    </div>
+    <div class="c-item">
+      <div class="c-ico">🌐</div>
+      <div class="c-text">
+        <div class="c-label">Web</div>
+        <div class="c-value blue">rgsmarttech.netlify.app</div>
+      </div>
+    </div>
+    <div class="c-item ig">
+      <div class="c-ico">📸</div>
+      <div class="c-text">
+        <div class="c-label">Instagram</div>
+        <div class="c-value ig">@r.g_smart_technology</div>
+      </div>
+    </div>
+    <div class="c-item" style="border-left-color:#1877F2">
+      <div class="c-ico">👥</div>
+      <div class="c-text">
+        <div class="c-label">Facebook</div>
+        <div class="c-value fb">R.G Smart Technology</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón WA -->
+  <div class="wa-btn">
+    <svg fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <div class="wa-text">
+      ¡Escríbenos ahora!
+      <small>Respuesta en menos de 2h</small>
+    </div>
+  </div>
+
+  <!-- Dirección -->
+  <div class="address">
+    <span>📍</span>
+    <p>Barquisimeto · Carrera 25 entre calles 26 y 27<br>Lunes a Sábado · Atención personalizada</p>
+  </div>
+
+</div>
+
+<script>
+var L = '_logo_uri.txt';
+fetch(L).then(r=>r.text()).then(u=>{
+  document.getElementById('logo').src = u;
+}).catch(()=>{});
+</script>
+</body>
+</html>
