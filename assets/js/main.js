@@ -1,7 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const logo = 'assets/img/logo.png';
-  const navImg = document.getElementById('nav-img');
-  const footerImg = document.getElementById('footer-img');
-  if (navImg) navImg.src = logo;
-  if (footerImg) footerImg.src = logo;
+  // Smooth scroll para links internos
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
 });
