@@ -1,0 +1,41 @@
+﻿# R.G Smart Technology
+
+> Soluciones tecnológicas integrales en Barquisimeto, Venezuela. Más de 20 años de experiencia en reparación de equipos, redes, videovigilancia y ensamblaje de PCs. Atención directa con el técnico, garantía incluida en cada servicio.
+
+## Sobre el negocio
+
+R.G Smart Technology es una empresa de servicios tecnológicos fundada y operada por Roberto Gil, técnico con más de 20 años de experiencia. Ofrece servicios de hardware, software, redes y seguridad para hogares y negocios en Barquisimeto, Cabudare, Zona Industrial y alrededores. Atención de lunes a sábado, servicio a domicilio, respuesta por WhatsApp en menos de 2 horas.
+
+## Servicios
+
+- **Reparación de PC y Laptops**: Diagnóstico, cambio de componentes, limpieza interna, recuperación de datos, reinstalación de sistema operativo. Todas las marcas.
+- **Ensamblaje de Equipos a Medida**: PCs para gaming, workstation u ofimática. Componentes nuevos según presupuesto y necesidad del cliente.
+- **Redes y Networking**: Instalación y configuración de redes domésticas y empresariales. Wi-Fi extendido, cableado estructurado, routers y switches.
+- **CCTV y Videovigilancia**: Instalación de cámaras de seguridad para hogares y negocios. DVR, acceso remoto desde celular, cableado profesional.
+
+## Propuesta de valor
+
+- Diagnóstico honesto antes de cobrar — sin costos ocultos
+- Garantía por escrito en cada reparación
+- Atención directa con el técnico, sin intermediarios
+- Servicio a domicilio en Barquisimeto y alrededores
+- Respuesta en menos de 2 horas por WhatsApp
+
+## Cobertura geográfica
+
+- Barquisimeto, Venezuela
+- Cabudare
+- Zona Industrial de Barquisimeto
+- Servicio a domicilio en toda la ciudad y alrededores
+
+## Contacto
+
+- WhatsApp: +58 412-066-6045
+- Email: regl280182@gmail.com
+- Instagram: @r.g_smart_technology
+- Facebook: R.G Smart Technology
+- Sitio web: https://rgsmarttech.netlify.app
+
+## URLs del sitio
+
+- https://rgsmarttech.netlify.app/ — Página principal con servicios, cobertura y contacto
