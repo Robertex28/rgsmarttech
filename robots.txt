@@ -2,4 +2,13 @@ User-agent: *
 Allow: /
 Disallow: /assets/video-hero.mp4
 
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
 Sitemap: https://rgsmarttech.vercel.app/sitemap.xml
