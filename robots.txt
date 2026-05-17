@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /assets/video-hero.mp4
+
+Sitemap: https://rgsmarttech.vercel.app/sitemap.xml
