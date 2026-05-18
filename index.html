@@ -261,6 +261,79 @@
     .why-t { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
     .why-d { font-size: .875rem; color: var(--muted); line-height: 1.65; }
 
+    /* ─── Sobre mí ─── */
+    #sobre-mi { background: var(--bg); }
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-top: 48px;
+    }
+    .sobre-img-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+    .sobre-img-glow {
+      position: absolute;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,212,255,.2) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+    .sobre-img {
+      width: 300px; height: 370px;
+      object-fit: cover; object-position: center top;
+      border-radius: 20px;
+      border: 1px solid var(--glass-bd);
+      position: relative; z-index: 1;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    }
+    .sobre-badge {
+      position: absolute;
+      bottom: -14px; left: 50%;
+      transform: translateX(-50%);
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 18px; border-radius: 100px;
+      background: rgba(10,10,15,.95);
+      border: 1px solid rgba(0,212,255,.3);
+      font-size: .78rem; font-weight: 600; color: var(--cyan);
+      white-space: nowrap; z-index: 2;
+    }
+    .sobre-nombre {
+      font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 6px;
+    }
+    .sobre-cargo {
+      font-size: .9rem; color: var(--cyan); font-weight: 600;
+      margin-bottom: 20px; letter-spacing: .02em;
+    }
+    .sobre-bio {
+      font-size: .95rem; color: var(--muted); line-height: 1.8;
+      margin-bottom: 28px; max-width: 520px;
+    }
+    .sobre-valores {
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .valor-item {
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .valor-ico {
+      font-size: 1.4rem; line-height: 1; flex-shrink: 0; margin-top: 2px;
+    }
+    .valor-t {
+      font-size: .9rem; font-weight: 700; color: #fff; margin-bottom: 2px;
+    }
+    .valor-d {
+      font-size: .8rem; color: var(--muted);
+    }
+    @media (max-width: 768px) {
+      .sobre-grid { grid-template-columns: 1fr; gap: 48px; }
+      .sobre-img-wrap { margin-bottom: 20px; }
+    }
+
     /* ─── Cobertura ─── */
     #cobertura { background: var(--bg2); }
     .cover-box {
@@ -578,6 +651,53 @@
       <div class="why-n">04</div>
       <div class="why-t">Servicio a domicilio</div>
       <div class="why-d">Vamos donde tú estás. Coordinamos la visita a tu conveniencia en Barquisimeto y alrededores.</div>
+    </div>
+  </div>
+</section>
+
+<section id="sobre-mi">
+  <div class="tag reveal">El técnico</div>
+  <h2 class="reveal d1">Quién está detrás<br>de <em>cada solución</em></h2>
+  <div class="sobre-grid reveal d2">
+    <div class="sobre-img-wrap">
+      <div class="sobre-img-glow"></div>
+      <img src="assets/img/roberto.jpg" alt="Roberto Gil — Técnico R.G Smart Technology" class="sobre-img"/>
+      <div class="sobre-badge">
+        <span class="pulse"></span>
+        Disponible ahora
+      </div>
+    </div>
+    <div class="sobre-body">
+      <h3 class="sobre-nombre">Roberto Gil</h3>
+      <p class="sobre-cargo">Técnico en Sistemas · Fundador R.G Smart Technology</p>
+      <p class="sobre-bio">Desde 2006 resolviendo problemas tecnológicos en Barquisimeto. Más de 20 años ensamblando, reparando y conectando equipos para hogares y negocios. Mi diferencial: te explico exactamente qué tiene tu equipo, en términos simples, y te doy la mejor solución al mejor costo. Sin letra pequeña, sin sorpresas.</p>
+      <div class="sobre-valores">
+        <div class="valor-item">
+          <span class="valor-ico">🔍</span>
+          <div>
+            <div class="valor-t">Diagnóstico transparente</div>
+            <div class="valor-d">Te explico todo antes de cobrar</div>
+          </div>
+        </div>
+        <div class="valor-item">
+          <span class="valor-ico">💰</span>
+          <div>
+            <div class="valor-t">Mejor costo-resultado</div>
+            <div class="valor-d">Sin piezas innecesarias</div>
+          </div>
+        </div>
+        <div class="valor-item">
+          <span class="valor-ico">✅</span>
+          <div>
+            <div class="valor-t">Responsable y puntual</div>
+            <div class="valor-d">Cumplo lo que prometo</div>
+          </div>
+        </div>
+      </div>
+      <a href="https://wa.me/584120666045?text=Hola%20Roberto%2C%20necesito%20ayuda%20técnica." class="btn-wa" target="_blank" style="display:inline-flex;margin-top:28px;">
+        <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Hablar con Roberto
+      </a>
     </div>
   </div>
 </section>
