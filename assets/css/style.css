@@ -687,34 +687,34 @@ footer {
 
 /* ─────────────────────────── FLOAT WA ─────────────────────────── */
 
-/* Second visual anchor — blue phone callout in #contacto */
-.contact-anchor {
+/* WhatsApp persuasion card in #contacto */
+.wa-card {
   display: flex; flex-direction: column; align-items: center;
-  gap: 8px; text-align: center;
-  background: var(--blue); color: #fff;
-  padding: 36px 52px; border-radius: var(--r-lg);
-  max-width: 460px; margin: 0 auto 44px;
-  text-decoration: none;
-  box-shadow: 0 6px 28px oklch(0.48 0.17 254 / .28);
-  transition: transform .2s, box-shadow .2s;
+  gap: 12px; text-align: center;
+  background: var(--wa); color: #fff;
+  border-radius: 20px; padding: 30px 24px;
+  max-width: 540px; margin: 0 auto 44px;
+  box-shadow: 0 6px 28px oklch(0.72 0.24 142 / .30);
 }
-.contact-anchor:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 40px oklch(0.48 0.17 254 / .38);
-}
-.contact-anchor-label {
-  font-size: .95rem; font-weight: 600; line-height: 1.55;
-  color: oklch(1 0 0 / .88); max-width: 340px; text-align: center;
-}
-.contact-anchor-num {
+.wa-card-title {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: clamp(2.2rem, 5vw, 3rem);
-  font-weight: 900; letter-spacing: .04em; line-height: 1;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 900; letter-spacing: .02em; line-height: 1.1;
+  color: #1a1a1a; margin: 0;
 }
-.contact-anchor-cta {
-  font-size: .75rem; font-weight: 700;
-  letter-spacing: .08em; text-transform: uppercase;
-  color: oklch(1 0 0 / .60); margin-top: 4px;
+.wa-card-body {
+  font-size: 1rem; font-weight: 500; line-height: 1.55;
+  color: #1a1a1a; max-width: 360px; margin: 0;
+}
+.wa-card-btn {
+  background: #fff; color: var(--wa-dark);
+  box-shadow: 0 4px 16px oklch(0 0 0 / .15);
+  margin-top: 4px;
+}
+.wa-card-btn:hover {
+  background: oklch(1 0 0 / .92);
+  box-shadow: 0 8px 28px oklch(0 0 0 / .22);
+  transform: translateY(-2px);
 }
 .form-section-title {
   font-family: 'Barlow Condensed', sans-serif;
