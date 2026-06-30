@@ -112,18 +112,8 @@ nav {
   box-shadow: 0 1px 0 var(--border), var(--sh-sm);
   transition: box-shadow .3s;
 }
-.nav-logo { display: flex; align-items: center; gap: 10px; }
-.nav-logo img { height: 46px; width: auto; object-fit: contain; }
-.nav-brand { display: flex; flex-direction: column; line-height: 1.15; }
-.brand-name {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 1.35rem; font-weight: 900;
-  color: var(--blue); text-transform: uppercase; letter-spacing: .04em;
-}
-.brand-slogan {
-  font-size: .7rem; font-weight: 500;
-  color: var(--ink-muted); letter-spacing: .01em;
-}
+.nav-logo { display: flex; align-items: center; }
+.nav-logo img { height: 40px; width: auto; object-fit: contain; }
 .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
 .nav-links a {
   font-size: .875rem; font-weight: 500;
