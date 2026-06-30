@@ -49,7 +49,7 @@
   --border-md: oklch(0.820 0.010 254);   /* medium border */
   --wa:        #25D366;
   --wa-dark:   #128C7E;
-  --nav-h:     68px;
+  --nav-h:     80px;
   --pad:       5%;
   --r:         14px;
   --r-lg:      20px;
@@ -113,7 +113,7 @@ nav {
   transition: box-shadow .3s;
 }
 .nav-logo { display: flex; align-items: center; }
-.nav-logo img { height: 40px; width: auto; object-fit: contain; }
+.nav-logo img { height: 64px; width: auto; object-fit: contain; }
 .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
 .nav-links a {
   font-size: .875rem; font-weight: 500;
