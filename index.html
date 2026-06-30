@@ -14,504 +14,7 @@
   <meta property="og:type" content="website"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:image" content="https://rgsmarttech.vercel.app/assets/img/og-image.png"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"/>
-  <style>
-    /* ─── Reset & Base ─── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --bg:        #0a0a0f;
-      --bg2:       #0f0f18;
-      --bg3:       #14141f;
-      --cyan:      #00d4ff;
-      --blue:      #0066ff;
-      --cyan-dim:  rgba(0,212,255,.15);
-      --blue-dim:  rgba(0,102,255,.15);
-      --glass-bg:  rgba(255,255,255,.04);
-      --glass-bd:  rgba(255,255,255,.08);
-      --text:      #e8e8f0;
-      --muted:     #8888aa;
-      --grad:      linear-gradient(135deg, var(--cyan), var(--blue));
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', system-ui, sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    a { color: inherit; text-decoration: none; }
-    em { font-style: normal; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-
-    /* ─── Scroll animations ─── */
-    /* Content visible by default; .js-loaded opts in to the animation */
-    .js-loaded .reveal { opacity: 0; transform: translateY(32px); transition: opacity .65s ease, transform .65s ease; }
-    .js-loaded .reveal.visible { opacity: 1; transform: none; }
-    .js-loaded .reveal.d1 { transition-delay: .1s; }
-    .js-loaded .reveal.d2 { transition-delay: .2s; }
-    .js-loaded .reveal.d3 { transition-delay: .3s; }
-    .js-loaded .reveal.d4 { transition-delay: .4s; }
-    .js-loaded .reveal.d5 { transition-delay: .5s; }
-    @media (prefers-reduced-motion: reduce) {
-      .js-loaded .reveal,
-      .js-loaded .reveal.visible { opacity: 1 !important; transform: none !important; transition: none !important; }
-      .pulse { animation: none !important; box-shadow: 0 0 0 3px rgba(0,212,255,.4) !important; }
-      * { transition-duration: .01ms !important; }
-    }
-
-    /* ─── Nav ─── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 5%;
-      height: 68px;
-      background: rgba(10,10,15,.8);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--glass-bd);
-      transition: background .3s;
-    }
-    .nav-logo { display: flex; align-items: center; gap: 10px; }
-    .nav-logo img { width: auto; height: 48px; object-fit: contain; }
-    .brand-name { display: block; font-weight: 700; font-size: .95rem; letter-spacing: .02em; color: #fff; }
-    .brand-slogan { display: block; font-size: .72rem; color: var(--muted); }
-    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
-    .nav-links a { font-size: .875rem; font-weight: 500; color: var(--muted); transition: color .2s; }
-    .nav-links a:hover { color: #fff; }
-    .nav-cta {
-      padding: 8px 18px; border-radius: 8px;
-      background: var(--grad); color: #fff !important;
-      font-weight: 600 !important;
-      transition: opacity .2s !important;
-    }
-    .nav-cta:hover { opacity: .85; }
-
-    /* ─── Hero ─── */
-    #hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center;
-      padding: 120px 5% 80px;
-      overflow: hidden;
-    }
-    .hero-video-wrap {
-      position: absolute; inset: 0; z-index: 0;
-      overflow: hidden;
-    }
-    .hero-video-wrap video {
-      width: 100%; height: 100%; object-fit: cover;
-    }
-    .hero-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(10,10,15,.7) 0%, rgba(10,10,15,.55) 50%, rgba(10,10,15,.92) 100%);
-      z-index: 1;
-    }
-    /* fallback glow when no video */
-    .hero-glow {
-      position: absolute; inset: 0; z-index: 0;
-      background:
-        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(0,102,255,.18) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 30% at 80% 60%, rgba(0,212,255,.1) 0%, transparent 60%);
-    }
-    #hero > *:not(.hero-video-wrap):not(.hero-glow) { position: relative; z-index: 2; }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 6px 14px; border-radius: 100px;
-      background: rgba(0,212,255,.08);
-      border: 1px solid rgba(0,212,255,.25);
-      font-size: .78rem; font-weight: 600; color: var(--cyan);
-      letter-spacing: .04em; text-transform: uppercase;
-      margin-bottom: 24px;
-    }
-    .pulse {
-      width: 7px; height: 7px; border-radius: 50%;
-      background: var(--cyan);
-      box-shadow: 0 0 0 0 rgba(0,212,255,.5);
-      animation: pulse 1.8s infinite;
-    }
-    @keyframes pulse {
-      0%   { box-shadow: 0 0 0 0 rgba(0,212,255,.5); }
-      70%  { box-shadow: 0 0 0 8px rgba(0,212,255,0); }
-      100% { box-shadow: 0 0 0 0 rgba(0,212,255,0); }
-    }
-    #hero h1 {
-      font-size: clamp(2.6rem, 6vw, 5.2rem);
-      font-weight: 900; line-height: 1.1; letter-spacing: -.03em;
-      color: #fff; margin-bottom: 16px;
-    }
-    .hero-sub {
-      font-size: 1.1rem; font-weight: 600;
-      background: var(--grad); -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent; background-clip: text;
-      letter-spacing: .06em; text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-    .hero-desc {
-      max-width: 560px; margin: 0 auto 36px;
-      font-size: 1.05rem; color: rgba(232,232,240,.75); line-height: 1.7;
-    }
-    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-bottom: 56px; }
-    .btn-wa {
-      display: inline-flex; align-items: center; gap: 9px;
-      padding: 14px 26px; border-radius: 10px;
-      background: #25d366; color: #fff;
-      font-weight: 700; font-size: .95rem;
-      box-shadow: 0 4px 24px rgba(37,211,102,.35);
-      transition: transform .2s, box-shadow .2s;
-    }
-    .btn-wa:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(37,211,102,.5); }
-    .btn-ghost {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 14px 26px; border-radius: 10px;
-      border: 1px solid var(--glass-bd);
-      background: var(--glass-bg);
-      backdrop-filter: blur(8px);
-      font-weight: 600; font-size: .95rem; color: #fff;
-      transition: border-color .2s, background .2s, transform .2s;
-    }
-    .btn-ghost:hover { border-color: var(--cyan); background: var(--cyan-dim); transform: translateY(-2px); }
-    .hero-stats {
-      display: flex; gap: 40px; flex-wrap: wrap; justify-content: center;
-    }
-    .stat { text-align: center; }
-    .stat-n {
-      font-size: 2rem; font-weight: 800; line-height: 1;
-      background: var(--grad); -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent; background-clip: text;
-    }
-    .stat-l { font-size: .78rem; color: var(--muted); margin-top: 4px; font-weight: 500; }
-
-    /* ─── Section base ─── */
-    section { padding: 100px 5%; }
-    .tag {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 5px 14px; border-radius: 100px;
-      background: var(--cyan-dim); border: 1px solid rgba(0,212,255,.2);
-      font-size: .75rem; font-weight: 700; color: var(--cyan);
-      letter-spacing: .06em; text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-    section h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800; line-height: 1.15; letter-spacing: -.025em;
-      color: #fff; margin-bottom: 16px;
-    }
-    .lead {
-      font-size: 1.05rem; color: var(--muted); max-width: 540px; margin-bottom: 52px;
-    }
-
-    /* ─── Servicios ─── */
-    #servicios { background: var(--bg2); }
-    .svc-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-    }
-    .svc-card {
-      position: relative;
-      padding: 32px 28px;
-      border-radius: 16px;
-      background: var(--glass-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--glass-bd);
-      transition: transform .3s, border-color .3s, box-shadow .3s;
-      overflow: hidden;
-    }
-    .svc-card::before {
-      content: '';
-      position: absolute; inset: 0;
-      border-radius: 16px;
-      padding: 1px;
-      background: var(--grad);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: destination-out;
-      mask-composite: exclude;
-      opacity: 0;
-      transition: opacity .3s;
-    }
-    .svc-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,102,255,.15); border-color: transparent; }
-    .svc-card:hover::before { opacity: 1; }
-    .svc-ico { font-size: 2.2rem; margin-bottom: 16px; line-height: 1; }
-    .svc-t { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
-    .svc-d { font-size: .875rem; color: var(--muted); line-height: 1.65; margin-bottom: 18px; }
-    .svc-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .stag {
-      font-size: .72rem; font-weight: 600;
-      padding: 3px 10px; border-radius: 100px;
-    }
-    .sb { background: rgba(0,102,255,.15); color: #6fa8ff; border: 1px solid rgba(0,102,255,.2); }
-    .sr { background: rgba(0,212,255,.1); color: #5fd4f0; border: 1px solid rgba(0,212,255,.2); }
-    .sg { background: rgba(55,200,120,.1); color: #5dcf90; border: 1px solid rgba(55,200,120,.2); }
-
-    /* ─── Por qué ─── */
-    #por-que { background: var(--bg); }
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px; margin-top: 48px;
-    }
-    .why-card {
-      padding: 32px 28px; border-radius: 16px;
-      background: var(--glass-bg); border: 1px solid var(--glass-bd);
-      transition: border-color .3s, background .3s, transform .3s;
-    }
-    .why-card:hover { border-color: rgba(0,212,255,.3); background: rgba(0,212,255,.04); transform: translateY(-4px); }
-    .why-n {
-      font-size: 2.5rem; font-weight: 900; line-height: 1;
-      background: var(--grad); -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent; background-clip: text;
-      margin-bottom: 14px; font-family: 'JetBrains Mono', monospace;
-    }
-    .why-t { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
-    .why-d { font-size: .875rem; color: var(--muted); line-height: 1.65; }
-
-    /* ─── Sobre mí ─── */
-    #sobre-mi { background: var(--bg); }
-    .sobre-grid {
-      display: grid;
-      grid-template-columns: 340px 1fr;
-      gap: 60px;
-      align-items: center;
-      margin-top: 48px;
-    }
-    .sobre-img-wrap {
-      position: relative;
-      display: flex;
-      justify-content: center;
-    }
-    .sobre-img-glow {
-      position: absolute;
-      width: 280px; height: 280px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,212,255,.2) 0%, transparent 70%);
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 0;
-    }
-    .sobre-img {
-      width: 300px; height: 370px;
-      object-fit: cover; object-position: center top;
-      border-radius: 20px;
-      border: 1px solid var(--glass-bd);
-      position: relative; z-index: 1;
-      box-shadow: 0 20px 60px rgba(0,0,0,.5);
-    }
-    .sobre-badge {
-      position: absolute;
-      bottom: -14px; left: 50%;
-      transform: translateX(-50%);
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 8px 18px; border-radius: 100px;
-      background: rgba(10,10,15,.95);
-      border: 1px solid rgba(0,212,255,.3);
-      font-size: .78rem; font-weight: 600; color: var(--cyan);
-      white-space: nowrap; z-index: 2;
-    }
-    .sobre-nombre {
-      font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 6px;
-    }
-    .sobre-cargo {
-      font-size: .9rem; color: var(--cyan); font-weight: 600;
-      margin-bottom: 20px; letter-spacing: .02em;
-    }
-    .sobre-bio {
-      font-size: .95rem; color: var(--muted); line-height: 1.8;
-      margin-bottom: 28px; max-width: 520px;
-    }
-    .sobre-valores {
-      display: flex; flex-direction: column; gap: 16px;
-    }
-    .valor-item {
-      display: flex; align-items: flex-start; gap: 14px;
-    }
-    .valor-ico {
-      font-size: 1.4rem; line-height: 1; flex-shrink: 0; margin-top: 2px;
-    }
-    .valor-t {
-      font-size: .9rem; font-weight: 700; color: #fff; margin-bottom: 2px;
-    }
-    .valor-d {
-      font-size: .8rem; color: var(--muted);
-    }
-    @media (max-width: 768px) {
-      .sobre-grid { grid-template-columns: 1fr; gap: 48px; }
-      .sobre-img-wrap { margin-bottom: 20px; }
-    }
-
-    /* ─── Cobertura ─── */
-    #cobertura { background: var(--bg2); }
-    .cover-box {
-      display: flex; gap: 28px; align-items: flex-start;
-      padding: 36px 40px; border-radius: 20px;
-      background: var(--glass-bg); border: 1px solid var(--glass-bd);
-      backdrop-filter: blur(12px);
-      max-width: 700px;
-    }
-    .cover-icon { font-size: 2.4rem; flex-shrink: 0; margin-top: 4px; }
-    .cover-body h3 { font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
-    .cover-body p { font-size: .9rem; color: var(--muted); margin-bottom: 18px; line-height: 1.7; }
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-    .chip {
-      padding: 5px 14px; border-radius: 100px; font-size: .78rem; font-weight: 600;
-      background: rgba(255,255,255,.06); border: 1px solid var(--glass-bd); color: var(--text);
-    }
-
-    /* ─── Contacto ─── */
-    #contacto { background: var(--bg); text-align: center; }
-    #contacto h2 { margin-bottom: 12px; }
-    #contacto .lead { margin: 0 auto 40px; }
-    .c-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px; max-width: 800px; margin: 0 auto 36px;
-    }
-    .c-card {
-      display: flex; flex-direction: column; align-items: center; gap: 6px;
-      padding: 24px 16px; border-radius: 14px;
-      background: var(--glass-bg); border: 1px solid var(--glass-bd);
-      transition: border-color .25s, transform .25s, background .25s;
-    }
-    .c-card:hover { border-color: var(--cyan); background: var(--cyan-dim); transform: translateY(-4px); }
-    .c-ico { font-size: 1.8rem; line-height: 1; }
-    .c-lbl { font-size: .72rem; font-weight: 700; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
-    .c-val { font-size: .875rem; font-weight: 600; color: #fff; }
-    .wa-big {
-      display: inline-flex; align-items: center; justify-content: center; gap: 12px;
-      padding: 16px 36px; border-radius: 12px;
-      background: #25d366; color: #fff;
-      font-weight: 700; font-size: 1.05rem;
-      box-shadow: 0 4px 28px rgba(37,211,102,.35);
-      transition: transform .2s, box-shadow .2s;
-      margin-bottom: 40px;
-    }
-    .wa-big:hover { transform: translateY(-3px); box-shadow: 0 10px 40px rgba(37,211,102,.5); }
-    .form-divider {
-      display: flex; align-items: center; gap: 16px;
-      max-width: 600px; margin: 0 auto 36px; color: var(--muted); font-size: .85rem;
-    }
-    .form-divider::before, .form-divider::after {
-      content: ''; flex: 1; height: 1px; background: var(--glass-bd);
-    }
-    .contact-form {
-      max-width: 600px; margin: 0 auto;
-      display: flex; flex-direction: column; gap: 18px;
-      text-align: left;
-    }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .form-group { display: flex; flex-direction: column; gap: 7px; }
-    .form-group label { font-size: .82rem; font-weight: 600; color: var(--muted); }
-    .form-group input, .form-group select, .form-group textarea {
-      background: var(--glass-bg); border: 1px solid var(--glass-bd);
-      border-radius: 10px; padding: 12px 16px;
-      color: var(--text); font-family: inherit; font-size: .9rem;
-      transition: border-color .2s, background .2s;
-      outline: none;
-    }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-      border-color: var(--cyan); background: rgba(0,212,255,.06);
-    }
-    .form-group select option { background: #1a1a2e; }
-    .form-group textarea { resize: vertical; min-height: 120px; }
-    .form-btn {
-      padding: 14px 28px; border-radius: 10px;
-      background: var(--grad); border: none; cursor: pointer;
-      color: #fff; font-family: inherit; font-weight: 700; font-size: .95rem;
-      transition: opacity .2s, transform .2s;
-    }
-    .form-btn:hover { opacity: .88; transform: translateY(-2px); }
-    .form-btn:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
-
-    /* ─── Footer ─── */
-    footer {
-      padding: 36px 5%;
-      background: var(--bg2);
-      border-top: 1px solid var(--glass-bd);
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
-    }
-    .footer-left { display: flex; align-items: center; gap: 14px; }
-    .footer-logo img { width: auto; height: 40px; object-fit: contain; }
-    .footer-info { font-size: .82rem; color: var(--muted); line-height: 1.6; }
-    .footer-info strong { color: var(--text); }
-    .socials { display: flex; gap: 12px; }
-    .socials a {
-      width: 38px; height: 38px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      background: var(--glass-bg); border: 1px solid var(--glass-bd);
-      font-size: 1.1rem;
-      transition: border-color .2s, background .2s, transform .2s;
-    }
-    .socials a:hover { border-color: var(--cyan); background: var(--cyan-dim); transform: translateY(-2px); }
-
-    /* ─── Floating WhatsApp ─── */
-    .wa-float {
-      position: fixed; bottom: 24px; right: 24px; z-index: 200;
-      width: 56px; height: 56px; border-radius: 50%;
-      background: #25d366;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 20px rgba(37,211,102,.45);
-      transition: transform .2s, box-shadow .2s;
-    }
-    .wa-float:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37,211,102,.6); }
-
-    /* ─── Mobile ─── */
-    /* --- Hamburguesa --- */
-    .ham-btn {
-      display: none;
-      flex-direction: column; justify-content: center; gap: 5px;
-      width: 40px; height: 40px; padding: 6px;
-      background: none; border: none; cursor: pointer; z-index: 300;
-    }
-    .ham-btn span {
-      display: block; height: 2px; border-radius: 2px;
-      background: var(--text);
-      transition: transform .3s, opacity .3s;
-    }
-    .ham-btn span:nth-child(1) { width: 24px; }
-    .ham-btn span:nth-child(2) { width: 18px; }
-    .ham-btn span:nth-child(3) { width: 22px; }
-    .ham-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); width: 24px; }
-    .ham-btn.open span:nth-child(2) { opacity: 0; }
-    .ham-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); width: 24px; }
-
-    .nav-mobile {
-      display: none;
-      position: fixed; inset: 0; z-index: 200;
-      background: rgba(10,10,15,.97);
-      backdrop-filter: blur(20px);
-      flex-direction: column; align-items: center; justify-content: center;
-      gap: 32px;
-    }
-    .nav-mobile.open { display: flex; }
-    .nav-mobile a {
-      font-size: 1.5rem; font-weight: 700; color: var(--text);
-      transition: color .2s;
-    }
-    .nav-mobile a:hover { color: var(--cyan); }
-    .nav-mobile .nav-cta {
-      padding: 12px 28px; border-radius: 10px;
-      background: var(--grad); color: #fff !important;
-    }
-
-    @media (max-width: 768px) {
-      nav { padding: 0 4%; }
-      .nav-links { display: none; }
-      .ham-btn { display: flex; }
-      .hero-stats { gap: 24px; }
-      .stat-n { font-size: 1.6rem; }
-      .form-row { grid-template-columns: 1fr; }
-      .cover-box { flex-direction: column; padding: 28px 24px; }
-      footer { flex-direction: column; text-align: center; }
-      .footer-left { flex-direction: column; }
-      .wa-float { bottom: 16px; right: 16px; }
-    }
-    @media (max-width: 480px) {
-      section { padding: 72px 4%; }
-      #hero h1 { font-size: 2.4rem; }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/style.css"/>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -552,9 +55,7 @@
     <li><a href="#cobertura">Cobertura</a></li>
     <li><a href="#contacto" class="nav-cta">📱 Contactar</a></li>
   </ul>
-  <button class="ham-btn" id="ham-btn" aria-label="Menú">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="ham-btn" id="ham-btn" aria-label="Menú" aria-expanded="false">☰</button>
 </nav>
 
 <div class="nav-mobile" id="nav-mobile">
@@ -564,6 +65,7 @@
   <a href="#contacto" class="nav-cta nav-mobile-link">📱 Contactar</a>
 </div>
 
+<!-- ══════════════════ HERO ══════════════════ -->
 <section id="hero">
   <div class="hero-video-wrap">
     <video autoplay muted loop playsinline preload="metadata">
@@ -573,107 +75,124 @@
   </div>
   <div class="hero-glow"></div>
 
-  <div class="hero-badge reveal"><div class="pulse"></div>Técnico Roberto Gil · Barquisimeto, Venezuela</div>
+  <p class="hero-location reveal"><span class="dot-alive" aria-hidden="true"></span>Barquisimeto, Venezuela · Disponible ahora</p>
   <h1 class="reveal d1">Tu tecnología<br><em>en manos expertas</em></h1>
   <p class="hero-sub reveal d2">Soluciones Tecnológicas</p>
   <p class="hero-desc reveal d3">Reparación de PC y laptops, ensamblaje de equipos, instalación de redes y sistemas CCTV. Más de 20 años de experiencia. Garantía incluida en cada servicio.</p>
   <div class="hero-btns reveal d4">
     <a href="https://wa.me/584120666045?text=Hola%20Roberto%2C%20necesito%20ayuda%20con%20mi%20equipo." class="btn-wa" target="_blank" rel="noopener noreferrer">
-      <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <svg width="20" height="20" fill="white" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       Escribir por WhatsApp
     </a>
     <a href="#servicios" class="btn-ghost">Ver servicios →</a>
   </div>
-  <div class="hero-stats reveal d5">
-    <div class="stat"><div class="stat-n">20+</div><div class="stat-l">Años de experiencia</div></div>
-    <div class="stat"><div class="stat-n">6</div><div class="stat-l">Áreas de servicio</div></div>
-    <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Garantía incluida</div></div>
-    <div class="stat"><div class="stat-n">2h</div><div class="stat-l">Respuesta WhatsApp</div></div>
-  </div>
+  <ul class="trust-bar reveal d5" role="list">
+    <li>📍 Barquisimeto</li>
+    <li>Técnico desde 2006</li>
+    <li>Garantía incluida</li>
+    <li>Respuesta en &lt;2h</li>
+  </ul>
 </section>
 
+<!-- ══════════════════ SERVICIOS ══════════════════ -->
 <section id="servicios">
-  <div class="tag reveal">Servicios</div>
-  <h2 class="reveal d1">Todo lo que<br>tu negocio <em>necesita</em></h2>
-  <p class="lead reveal d2">Hardware, software, redes, seguridad y presencia digital. Un solo experto, solución completa.</p>
-  <div class="svc-grid">
-    <div class="svc-card reveal d1">
-      <div class="svc-ico">💻</div>
-      <div class="svc-t">Reparación de PC y Laptops</div>
-      <div class="svc-d">Diagnóstico preciso, cambio de componentes, limpieza interna, recuperación de datos y reinstalación del sistema. Todas las marcas.</div>
-      <div class="svc-tags"><span class="stag sb">Hardware</span><span class="stag sr">Software</span><span class="stag sg">Recuperación datos</span></div>
+  <h2 class="reveal">Todo lo que<br>tu negocio <em>necesita</em></h2>
+  <p class="lead reveal d1">Hardware, software, redes, seguridad y presencia digital. Un solo experto, solución completa.</p>
+
+  <div class="svc-featured-row">
+    <div class="svc-card svc-featured svc-repair reveal d2">
+      <div class="svc-head">
+        <div class="svc-ico-wrap" aria-hidden="true">💻</div>
+        <div class="svc-t">Reparación de PC y Laptops</div>
+      </div>
+      <div class="svc-body">
+        <p class="svc-d">Diagnóstico preciso, cambio de componentes, limpieza interna, recuperación de datos y reinstalación del sistema. Todas las marcas.</p>
+        <div class="svc-tags">
+          <span class="stag">Hardware</span>
+          <span class="stag">Software</span>
+          <span class="stag">Recuperación de datos</span>
+        </div>
+      </div>
     </div>
-    <div class="svc-card reveal d2">
-      <div class="svc-ico">🔧</div>
+    <div class="svc-card svc-featured svc-web reveal d3">
+      <div class="svc-head">
+        <div class="svc-ico-wrap" aria-hidden="true">🖥️</div>
+        <div class="svc-t">Páginas Web Profesionales</div>
+      </div>
+      <div class="svc-body">
+        <p class="svc-d">Diseño y desarrollo de landing pages y sitios web modernos para negocios. Rápidos, responsivos y listos para captar clientes en línea.</p>
+        <div class="svc-tags">
+          <span class="stag">Diseño</span>
+          <span class="stag">Desarrollo</span>
+          <span class="stag">SEO básico</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="svc-compact-row">
+    <div class="svc-card svc-compact svc-build reveal d2">
+      <div class="svc-ico" aria-hidden="true">🔧</div>
       <div class="svc-t">Ensamblaje de Equipos</div>
-      <div class="svc-d">Diseñamos y ensamblamos tu PC a medida. Gaming, workstation u ofimática. Componentes nuevos según tu presupuesto y necesidad.</div>
-      <div class="svc-tags"><span class="stag sr">A tu medida</span><span class="stag sb">Gaming</span><span class="stag sg">Oficina</span></div>
+      <p class="svc-d">Diseñamos y ensamblamos tu PC a medida. Gaming, workstation u ofimática. Componentes nuevos según tu presupuesto.</p>
+      <div class="svc-tags"><span class="stag">A tu medida</span><span class="stag">Gaming</span></div>
     </div>
-    <div class="svc-card reveal d3">
-      <div class="svc-ico">🌐</div>
+    <div class="svc-card svc-compact svc-network reveal d3">
+      <div class="svc-ico" aria-hidden="true">🌐</div>
       <div class="svc-t">Redes y Networking</div>
-      <div class="svc-d">Instalación y configuración de redes domésticas y empresariales. Wi-Fi extendido, cableado estructurado, routers y switches.</div>
-      <div class="svc-tags"><span class="stag sb">Wi-Fi</span><span class="stag sr">Cableado</span><span class="stag sg">Empresarial</span></div>
+      <p class="svc-d">Redes domésticas y empresariales. Wi-Fi extendido, cableado estructurado, routers y switches configurados.</p>
+      <div class="svc-tags"><span class="stag">Wi-Fi</span><span class="stag">Empresarial</span></div>
     </div>
-    <div class="svc-card reveal d4">
-      <div class="svc-ico">📹</div>
+    <div class="svc-card svc-compact svc-cctv reveal d4">
+      <div class="svc-ico" aria-hidden="true">📹</div>
       <div class="svc-t">CCTV y Videovigilancia</div>
-      <div class="svc-d">Instalación de cámaras de seguridad para hogar o negocio. DVR, acceso remoto desde tu celular y cableado profesional.</div>
-      <div class="svc-tags"><span class="stag sr">Hogares</span><span class="stag sb">Negocios</span><span class="stag sg">Acceso remoto</span></div>
+      <p class="svc-d">Cámaras de seguridad para hogar o negocio. DVR, acceso remoto desde tu celular y cableado profesional.</p>
+      <div class="svc-tags"><span class="stag">Hogares</span><span class="stag">Negocios</span></div>
     </div>
-    <div class="svc-card reveal d5">
-      <div class="svc-ico">🖥️</div>
-      <div class="svc-t">Páginas Web Profesionales</div>
-      <div class="svc-d">Diseño y desarrollo de landing pages y sitios web modernos para negocios. Rápidos, responsivos y listos para captar clientes en línea.</div>
-      <div class="svc-tags"><span class="stag sb">Diseño</span><span class="stag sr">Desarrollo</span><span class="stag sg">SEO básico</span></div>
-    </div>
-    <div class="svc-card reveal d5">
-      <div class="svc-ico">🤖</div>
+    <div class="svc-card svc-compact svc-auto reveal d4">
+      <div class="svc-ico" aria-hidden="true">🤖</div>
       <div class="svc-t">Automatizaciones con IA</div>
-      <div class="svc-d">Automatiza tareas repetitivas con inteligencia artificial y flujos n8n. Ahorra tiempo, reduce errores y escala tu negocio sin contratar más personal.</div>
-      <div class="svc-tags"><span class="stag sg">n8n</span><span class="stag sb">IA</span><span class="stag sr">Flujos de trabajo</span></div>
+      <p class="svc-d">Automatiza tareas repetitivas con inteligencia artificial y flujos n8n. Ahorra tiempo y escala tu negocio.</p>
+      <div class="svc-tags"><span class="stag">n8n</span><span class="stag">Flujos de trabajo</span></div>
     </div>
   </div>
 </section>
 
-<section id="por-que">
-  <div class="tag reveal">¿Por qué elegirnos?</div>
-  <h2 class="reveal d1">Experiencia que se<br><em>nota en resultados</em></h2>
+<!-- ══════════════════ POR QUÉ ══════════════════ -->
+<section id="por-que" class="bg-alt">
+  <h2 class="reveal">Experiencia que se<br><em>nota en resultados</em></h2>
+  <p class="lead reveal d1">Cuatro compromisos que no son marketing, son la forma en que trabajamos.</p>
   <div class="why-grid">
     <div class="why-card reveal d1">
-      <div class="why-n">01</div>
+      <div class="why-n" aria-hidden="true">01</div>
       <div class="why-t">Diagnóstico honesto</div>
-      <div class="why-d">Te decimos exactamente qué tiene tu equipo antes de cobrar. Sin sorpresas ni costos ocultos al final.</div>
+      <p class="why-d">Te decimos exactamente qué tiene tu equipo antes de cobrar. Sin sorpresas ni costos ocultos al final.</p>
     </div>
     <div class="why-card reveal d2">
-      <div class="why-n">02</div>
+      <div class="why-n" aria-hidden="true">02</div>
       <div class="why-t">Garantía por escrito</div>
-      <div class="why-d">Cada reparación lleva garantía incluida. Si el problema regresa, lo resolvemos sin costo adicional.</div>
+      <p class="why-d">Cada reparación lleva garantía incluida. Si el problema regresa, lo resolvemos sin costo adicional.</p>
     </div>
     <div class="why-card reveal d3">
-      <div class="why-n">03</div>
+      <div class="why-n" aria-hidden="true">03</div>
       <div class="why-t">Atención directa</div>
-      <div class="why-d">Hablas directo con el técnico. Respuesta en menos de 2 horas por WhatsApp. Sin intermediarios.</div>
+      <p class="why-d">Hablas directo con el técnico. Respuesta en menos de 2 horas por WhatsApp. Sin intermediarios.</p>
     </div>
     <div class="why-card reveal d4">
-      <div class="why-n">04</div>
+      <div class="why-n" aria-hidden="true">04</div>
       <div class="why-t">Servicio a domicilio</div>
-      <div class="why-d">Vamos donde tú estás. Coordinamos la visita a tu conveniencia en Barquisimeto y alrededores.</div>
+      <p class="why-d">Vamos donde tú estás. Coordinamos la visita a tu conveniencia en Barquisimeto y alrededores.</p>
     </div>
   </div>
 </section>
 
+<!-- ══════════════════ SOBRE MÍ ══════════════════ -->
 <section id="sobre-mi">
-  <div class="tag reveal">El técnico</div>
-  <h2 class="reveal d1">Quién está detrás<br>de <em>cada solución</em></h2>
-  <div class="sobre-grid reveal d2">
+  <h2 class="reveal">Quién está detrás<br>de <em>cada solución</em></h2>
+  <div class="sobre-grid reveal d1">
     <div class="sobre-img-wrap">
-      <div class="sobre-img-glow"></div>
       <img src="assets/img/roberto.png" alt="Roberto Gil — Técnico R.G Smart Technology" class="sobre-img"/>
-      <div class="sobre-badge">
-        <span class="pulse"></span>
-        Disponible ahora
-      </div>
+      <div class="sobre-credencial">Técnico en Sistemas · Desde 2006</div>
     </div>
     <div class="sobre-body">
       <h3 class="sobre-nombre">Roberto Gil</h3>
@@ -681,40 +200,104 @@
       <p class="sobre-bio">Desde 2006 resolviendo problemas tecnológicos en Barquisimeto. Más de 20 años ensamblando, reparando y conectando equipos para hogares y negocios. Mi diferencial: te explico exactamente qué tiene tu equipo, en términos simples, y te doy la mejor solución al mejor costo. Sin letra pequeña, sin sorpresas.</p>
       <div class="sobre-valores">
         <div class="valor-item">
-          <span class="valor-ico">🔍</span>
+          <span class="valor-ico" aria-hidden="true">🔍</span>
           <div>
             <div class="valor-t">Diagnóstico transparente</div>
             <div class="valor-d">Te explico todo antes de cobrar</div>
           </div>
         </div>
         <div class="valor-item">
-          <span class="valor-ico">💰</span>
+          <span class="valor-ico" aria-hidden="true">💰</span>
           <div>
             <div class="valor-t">Mejor costo-resultado</div>
             <div class="valor-d">Sin piezas innecesarias</div>
           </div>
         </div>
         <div class="valor-item">
-          <span class="valor-ico">✅</span>
+          <span class="valor-ico" aria-hidden="true">✅</span>
           <div>
             <div class="valor-t">Responsable y puntual</div>
             <div class="valor-d">Cumplo lo que prometo</div>
           </div>
         </div>
       </div>
-      <a href="https://wa.me/584120666045?text=Hola%20Roberto%2C%20necesito%20ayuda%20técnica." class="btn-wa" target="_blank" rel="noopener noreferrer" style="display:inline-flex;margin-top:28px;">
-        <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <a href="https://wa.me/584120666045?text=Hola%20Roberto%2C%20necesito%20ayuda%20técnica." class="btn-wa sobre-cta" target="_blank" rel="noopener noreferrer">
+        <svg width="20" height="20" fill="white" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Hablar con Roberto
       </a>
     </div>
   </div>
 </section>
 
+<!-- ══════════════════ TESTIMONIOS ══════════════════ -->
+<section id="testimonios" class="bg-alt" aria-labelledby="testimonios-titulo">
+  <h2 id="testimonios-titulo" class="reveal">Lo que dicen<br>nuestros <em>clientes</em></h2>
+
+  <div class="carousel-wrap reveal d1" role="region" aria-label="Testimonios de clientes">
+    <div class="carousel-track" aria-live="polite" aria-atomic="true" tabindex="0">
+
+      <article class="testimonial" aria-hidden="true">
+        <blockquote>Mi laptop tenía las bisagras dañadas y la carcasa partida. Pensé que ya no tenía arreglo, pero Roberto la restauró completa, quedó funcional y ya no se nota la parte que estaba partida.</blockquote>
+        <footer>
+          <strong class="t-name">Mari Carmen Leal</strong>
+        </footer>
+      </article>
+
+      <article class="testimonial" aria-hidden="true">
+        <blockquote>Llevábamos el inventario en Excel, a mano. Ahora tenemos un sistema con alertas de stock y reportes automáticos. Muy satisfecho con cómo quedó operando el negocio.</blockquote>
+        <footer>
+          <strong class="t-name">José Rodríguez</strong>
+          <span class="t-label">Cauchera/Duralven</span>
+        </footer>
+      </article>
+
+      <article class="testimonial" aria-hidden="true">
+        <blockquote>Antes recibíamos los pedidos por WhatsApp uno por uno. Ahora el cliente arma su pedido en la web y ve el precio al instante. Muy satisfechos con cómo quedó funcionando todo.</blockquote>
+        <footer>
+          <strong class="t-name">Raúl González</strong>
+          <span class="t-label">Offset Los Hermanos</span>
+        </footer>
+      </article>
+
+      <article class="testimonial" aria-hidden="true">
+        <blockquote>Llevábamos los ingresos de la parroquia de forma manual. Roberto nos hizo un sistema que registra ingresos y egresos. Muy satisfechos con el control que nos da.</blockquote>
+        <footer>
+          <strong class="t-name">Padre Alexander</strong>
+          <span class="t-label">Parroquia San José</span>
+        </footer>
+      </article>
+
+      <article class="testimonial" aria-hidden="true">
+        <blockquote>Mi laptop no cargaba por un integrado dañado. Pensé que la había perdido, pero Roberto la reemplazó y reprogramó. Quedé muy contenta porque la pudo salvar.</blockquote>
+        <footer>
+          <strong class="t-name">Alejandra González</strong>
+        </footer>
+      </article>
+
+      <article class="testimonial" aria-hidden="true">
+        <blockquote>Necesitaba una página con pagos online y WhatsApp. Roberto me la entregó funcionando completa, y me encantó cómo quedó. Quedó hermosa.</blockquote>
+        <footer>
+          <strong class="t-name">Belén Mammarelli</strong>
+          <span class="t-label">Argentina</span>
+        </footer>
+      </article>
+
+    </div>
+    <button class="car-prev" aria-label="Testimonio anterior">&#8249;</button>
+    <button class="car-next" aria-label="Testimonio siguiente">&#8250;</button>
+  </div>
+
+  <div class="car-dots" role="tablist" aria-label="Seleccionar testimonio"></div>
+  <div class="car-pause-wrap">
+    <button class="car-pause" aria-pressed="false">Pausar avance automático</button>
+  </div>
+</section>
+
+<!-- ══════════════════ COBERTURA ══════════════════ -->
 <section id="cobertura">
-  <div class="tag reveal">Cobertura</div>
-  <h2 class="reveal d1">Estamos en<br><em>Barquisimeto</em></h2>
-  <div class="cover-box reveal d2">
-    <div class="cover-icon">📍</div>
+  <h2 class="reveal">Estamos en<br><em>Barquisimeto</em></h2>
+  <div class="cover-box reveal d1">
+    <div class="cover-icon" aria-hidden="true">📍</div>
     <div class="cover-body">
       <h3>Servicio a domicilio en toda la ciudad</h3>
       <p>Atendemos en tu casa o negocio. Coordinamos la visita a tu conveniencia por WhatsApp. Disponibles de lunes a sábado para resolver tu problema.</p>
@@ -729,24 +312,39 @@
   </div>
 </section>
 
-<section id="contacto">
-  <div class="tag reveal" style="margin:0 auto 20px;">Contacto</div>
-  <h2 class="reveal d1">¿Listo para <em>solucionar</em><br>tu problema?</h2>
-  <p class="lead reveal d2" style="margin:0 auto 40px;">Escríbenos ahora. Sin formularios, sin esperas. Respuesta inmediata.</p>
-  <div class="c-grid reveal d3">
-    <a href="https://wa.me/584120666045" class="c-card" target="_blank" rel="noopener noreferrer"><div class="c-ico">📱</div><div class="c-lbl">WhatsApp</div><div class="c-val">0412-066-6045</div></a>
-    <a href="mailto:regl280182@gmail.com" class="c-card"><div class="c-ico">✉️</div><div class="c-lbl">Email</div><div class="c-val">regl280182@gmail.com</div></a>
-    <a href="https://www.instagram.com/r.g_smart_technology" class="c-card" target="_blank" rel="noopener noreferrer"><div class="c-ico">📸</div><div class="c-lbl">Instagram</div><div class="c-val">@r.g_smart_technology</div></a>
-    <a href="https://www.facebook.com/profile.php?id=61561669738813" class="c-card" target="_blank" rel="noopener noreferrer"><div class="c-ico">👥</div><div class="c-lbl">Facebook</div><div class="c-val">R.G Smart Technology</div></a>
+<!-- ══════════════════ CONTACTO ══════════════════ -->
+<section id="contacto" class="bg-alt">
+  <h2 class="reveal">¿Listo para <em>solucionar</em><br>tu problema?</h2>
+  <p class="lead reveal d1">Escríbenos ahora. Sin formularios, sin esperas. Respuesta inmediata.</p>
+  <div class="c-grid reveal d2">
+    <a href="https://wa.me/584120666045" class="c-card" target="_blank" rel="noopener noreferrer">
+      <div class="c-ico" aria-hidden="true">📱</div>
+      <div class="c-lbl">WhatsApp</div>
+      <div class="c-val">0412-066-6045</div>
+    </a>
+    <a href="mailto:regl280182@gmail.com" class="c-card">
+      <div class="c-ico" aria-hidden="true">✉️</div>
+      <div class="c-lbl">Email</div>
+      <div class="c-val">regl280182@gmail.com</div>
+    </a>
+    <a href="https://www.instagram.com/r.g_smart_technology" class="c-card" target="_blank" rel="noopener noreferrer">
+      <div class="c-ico" aria-hidden="true">📸</div>
+      <div class="c-lbl">Instagram</div>
+      <div class="c-val">@r.g_smart_technology</div>
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=61561669738813" class="c-card" target="_blank" rel="noopener noreferrer">
+      <div class="c-ico" aria-hidden="true">👥</div>
+      <div class="c-lbl">Facebook</div>
+      <div class="c-val">R.G Smart Technology</div>
+    </a>
   </div>
-  <a href="https://wa.me/584120666045?text=Hola%20Roberto%2C%20necesito%20ayuda%20t%C3%A9cnica%20con%20mi%20equipo." class="wa-big reveal d4" target="_blank" rel="noopener noreferrer">
-    <svg width="26" height="26" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <a href="https://wa.me/584120666045?text=Hola%20Roberto%2C%20necesito%20ayuda%20t%C3%A9cnica%20con%20mi%20equipo." class="wa-big reveal d3" target="_blank" rel="noopener noreferrer">
+    <svg width="26" height="26" fill="white" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     Escribir por WhatsApp ahora
   </a>
 
-  <div class="form-divider reveal"><span>O déjanos tu mensaje aquí</span></div>
-
-  <form id="contact-form" class="contact-form reveal">
+  <div class="form-divider reveal d4">o envía un mensaje</div>
+  <form id="contact-form" class="contact-form reveal d4">
     <input name="bot-field" id="bot-field" type="hidden" style="display:none" tabindex="-1" autocomplete="off">
     <div class="form-row">
       <div class="form-group">
@@ -805,39 +403,38 @@
 </footer>
 
 <a class="wa-float" href="https://wa.me/584120666045?text=Hola%20Roberto%2C%20necesito%20ayuda%20t%C3%A9cnica%20con%20mi%20equipo." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp — Escribir a Roberto">
-  <svg width="30" height="30" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <svg width="30" height="30" fill="white" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
 <script>
-  // Scroll reveal — content visible by default; .js-loaded opts in to animation
+  // Scroll reveal
   document.documentElement.classList.add('js-loaded');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-  // Menú hamburguesa
+  // Hamburger menu
   const hamBtn = document.getElementById('ham-btn');
   const navMobile = document.getElementById('nav-mobile');
   hamBtn.addEventListener('click', () => {
-    hamBtn.classList.toggle('open');
-    navMobile.classList.toggle('open');
-    document.body.style.overflow = navMobile.classList.contains('open') ? 'hidden' : '';
+    const isOpen = navMobile.classList.toggle('open');
+    hamBtn.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
   });
   document.querySelectorAll('.nav-mobile-link').forEach(link => {
     link.addEventListener('click', () => {
-      hamBtn.classList.remove('open');
       navMobile.classList.remove('open');
+      hamBtn.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
     });
   });
 
-  // Formulario → Make.com webhook
+  // Contact form → /api/contacto proxy
   const form = document.getElementById('contact-form');
   if (form) {
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
-      // Honeypot anti-bot
       if (document.getElementById('bot-field').value) return;
       const btn = document.getElementById('form-btn');
       const msg = document.getElementById('form-msg');
@@ -865,7 +462,7 @@
         } else { throw new Error('Error servidor'); }
       } catch {
         msg.style.display = 'block';
-        msg.style.color = '#ff6b6b';
+        msg.style.color = '#e53935';
         msg.textContent = '❌ Error al enviar. Escríbenos por WhatsApp.';
         btn.disabled = false;
         btn.textContent = 'Enviar mensaje';
@@ -873,13 +470,107 @@
     });
   }
 
-  // Nav scroll opacity
+  // Nav scroll shadow
   const nav = document.querySelector('nav');
   window.addEventListener('scroll', () => {
-    nav.style.background = window.scrollY > 60
-      ? 'rgba(10,10,15,0.97)'
-      : 'rgba(10,10,15,0.8)';
-  });
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // Testimonios carousel
+  (function () {
+    const track    = document.querySelector('.carousel-track');
+    const dotsWrap = document.querySelector('.car-dots');
+    const prevBtn  = document.querySelector('.car-prev');
+    const nextBtn  = document.querySelector('.car-next');
+    const pauseBtn = document.querySelector('.car-pause');
+    if (!track) return;
+
+    const slides = Array.from(track.querySelectorAll('.testimonial'));
+    if (!slides.length) return;
+
+    const DELAY = 5500;
+    const noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let current = 0;
+    let timer   = null;
+    let paused  = noMotion;
+
+    // Build dots
+    slides.forEach((_, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'dot' + (i === 0 ? ' active' : '');
+      btn.setAttribute('role', 'tab');
+      btn.setAttribute('aria-label', 'Testimonio ' + (i + 1));
+      btn.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+      btn.addEventListener('click', () => go(i, true));
+      dotsWrap.appendChild(btn);
+    });
+    const dots = Array.from(dotsWrap.querySelectorAll('.dot'));
+
+    function show(idx) {
+      slides[current].classList.remove('active');
+      slides[current].setAttribute('aria-hidden', 'true');
+      dots[current].classList.remove('active');
+      dots[current].setAttribute('aria-selected', 'false');
+      current = (idx + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      slides[current].setAttribute('aria-hidden', 'false');
+      dots[current].classList.add('active');
+      dots[current].setAttribute('aria-selected', 'true');
+    }
+
+    function go(idx, manual) {
+      show(idx);
+      if (manual) pause();
+    }
+
+    function startAuto() {
+      if (paused) return;
+      clearInterval(timer);
+      timer = setInterval(() => go(current + 1, false), DELAY);
+    }
+
+    function pause() {
+      paused = true;
+      clearInterval(timer);
+      if (pauseBtn) {
+        pauseBtn.setAttribute('aria-pressed', 'true');
+        pauseBtn.textContent = 'Reanudar avance';
+      }
+    }
+
+    function resume() {
+      paused = false;
+      if (pauseBtn) {
+        pauseBtn.setAttribute('aria-pressed', 'false');
+        pauseBtn.textContent = 'Pausar avance automático';
+      }
+      startAuto();
+    }
+
+    // Init first slide
+    show(0);
+
+    prevBtn.addEventListener('click', () => go(current - 1, true));
+    nextBtn.addEventListener('click', () => go(current + 1, true));
+    if (pauseBtn) pauseBtn.addEventListener('click', () => paused ? resume() : pause());
+
+    // Keyboard navigation on track
+    track.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { go(current - 1, true); e.preventDefault(); }
+      if (e.key === 'ArrowRight') { go(current + 1, true); e.preventDefault(); }
+    });
+
+    // Pause when focused inside carousel
+    const wrap = document.querySelector('.carousel-wrap');
+    if (wrap) {
+      wrap.addEventListener('focusin', () => { if (!paused) pause(); });
+      wrap.addEventListener('focusout', (e) => {
+        if (!wrap.contains(e.relatedTarget)) resume();
+      });
+    }
+
+    if (!noMotion) startAuto();
+  })();
 </script>
 </body>
 </html>
