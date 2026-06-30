@@ -11,4 +11,4 @@ Allow: /
 User-agent: WhatsApp
 Allow: /
 
-Sitemap: https://rgsmarttech.vercel.app/sitemap.xml
+Sitemap: https://www.rgsmarttech.com/sitemap.xml
