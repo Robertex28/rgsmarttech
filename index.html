@@ -851,7 +851,7 @@
         mensaje:  form.mensaje.value.trim()
       };
       try {
-        const res = await fetch('https://hook.us2.make.com/08jnza29s3xt5o8rxlei75l29hrc4gte', {
+        const res = await fetch('/api/contacto', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)
