@@ -1,24 +1,27 @@
-﻿# R.G Smart Technology
+# R.G Smart Technology
 
-> Soluciones tecnológicas integrales en Barquisimeto, Venezuela. Más de 20 años de experiencia en reparación de equipos, redes, videovigilancia y ensamblaje de PCs. Atención directa con el técnico, garantía incluida en cada servicio.
+> Sistemas a medida, automatización con IA y auditorías de seguridad web para negocios locales y remotos. También reparación de equipos, redes y videovigilancia en Barquisimeto, Venezuela. Más de 20 años de experiencia, atención directa con el técnico, garantía incluida.
 
 ## Sobre el negocio
 
-R.G Smart Technology es una empresa de servicios tecnológicos fundada y operada por Roberto Gil, técnico con más de 20 años de experiencia. Ofrece servicios de hardware, software, redes y seguridad para hogares y negocios en Barquisimeto, Cabudare, Zona Industrial y alrededores. Atención de lunes a sábado, servicio a domicilio, respuesta por WhatsApp en menos de 2 horas.
+R.G Smart Technology es una empresa de servicios tecnológicos fundada y operada por Roberto Gil, técnico con más de 20 años de experiencia. Ofrece desarrollo de sistemas y páginas web, automatización con inteligencia artificial, auditorías de seguridad, y también hardware, redes y seguridad física para hogares y negocios en Barquisimeto, Cabudare, Zona Industrial y alrededores, además de clientes remotos. Atención de lunes a sábado, servicio a domicilio para lo físico, respuesta por WhatsApp en menos de 2 horas.
 
 ## Servicios
 
-- **Reparación de PC y Laptops**: Diagnóstico, cambio de componentes, limpieza interna, recuperación de datos, reinstalación de sistema operativo. Todas las marcas.
-- **Ensamblaje de Equipos a Medida**: PCs para gaming, workstation u ofimática. Componentes nuevos según presupuesto y necesidad del cliente.
+- **Páginas Web y Sistemas a Medida**: Diseño y desarrollo de sitios web, landing pages y sistemas a medida (inventario, CRM, facturación) para negocios locales y remotos.
+- **Automatización con IA**: Automatización de tareas repetitivas con inteligencia artificial y flujos n8n. Integraciones con CRM, correo y WhatsApp.
+- **Auditoría de Seguridad Web**: Revisión de sitios y sistemas — credenciales expuestas, reglas de base de datos, configuración de formularios. Reporte con prioridades.
 - **Redes y Networking**: Instalación y configuración de redes domésticas y empresariales. Wi-Fi extendido, cableado estructurado, routers y switches.
 - **CCTV y Videovigilancia**: Instalación de cámaras de seguridad para hogares y negocios. DVR, acceso remoto desde celular, cableado profesional.
+- **Ensamblaje de Equipos a Medida**: PCs para gaming, workstation u ofimática. Componentes nuevos según presupuesto y necesidad del cliente.
+- **Reparación de PC y Laptops**: Diagnóstico, cambio de componentes, limpieza interna, recuperación de datos, reinstalación de sistema operativo. Todas las marcas.
 
 ## Propuesta de valor
 
 - Diagnóstico honesto antes de cobrar — sin costos ocultos
 - Garantía por escrito en cada reparación
 - Atención directa con el técnico, sin intermediarios
-- Servicio a domicilio en Barquisimeto y alrededores
+- Servicio a domicilio en Barquisimeto y alrededores; sistemas y automatización también para clientes remotos
 - Respuesta en menos de 2 horas por WhatsApp
 
 ## Cobertura geográfica
@@ -26,7 +29,7 @@ R.G Smart Technology es una empresa de servicios tecnológicos fundada y operada
 - Barquisimeto, Venezuela
 - Cabudare
 - Zona Industrial de Barquisimeto
-- Servicio a domicilio en toda la ciudad y alrededores
+- Servicio a domicilio en toda la ciudad y alrededores (servicios físicos); sistemas, web y automatización disponibles de forma remota para cualquier ubicación
 
 ## Contacto
 
@@ -34,8 +37,8 @@ R.G Smart Technology es una empresa de servicios tecnológicos fundada y operada
 - Email: regl280182@gmail.com
 - Instagram: @r.g_smart_technology
 - Facebook: R.G Smart Technology
-- Sitio web: https://rgsmarttech.netlify.app
+- Sitio web: https://www.rgsmarttech.com
 
 ## URLs del sitio
 
-- https://rgsmarttech.netlify.app/ — Página principal con servicios, cobertura y contacto
+- https://www.rgsmarttech.com/ — Página principal con servicios, cobertura y contacto

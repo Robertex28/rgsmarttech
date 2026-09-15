@@ -6,11 +6,11 @@ brand
 
 ## Users
 
-Individuals and small businesses in Barquisimeto, Cabudare, and the surrounding Zona Industrial area who need reliable tech help: PC/laptop repair, custom builds, home/office networking, or CCTV installation. They are non-technical — they know something is broken or needed, not how to fix it. Their primary concern is trust: "Is this person real? Can I count on them?" They reach out via WhatsApp or a contact form; the decision happens on mobile.
+Two audiences, in priority order. Primary: small and medium businesses (local and remote/foreign) who need custom systems, web development, workflow automation, or a security audit for an existing site or system. They are evaluating a technical partner for a project, not just someone to fix a one-off problem. Secondary: individuals and small businesses in Barquisimeto, Cabudare, and the surrounding Zona Industrial area who need reliable tech help: PC/laptop repair, custom builds, home/office networking, or CCTV installation. They are non-technical — they know something is broken or needed, not how to fix it. Their primary concern is trust: "Is this person real? Can I count on them?" Both audiences reach out via WhatsApp or a contact form; the decision happens on mobile.
 
 ## Product Purpose
 
-Convert site visitors into clients. The landing page is the entire front door of the business. Success means a potential client feeling confident enough to tap the WhatsApp button. Secondary purpose: SEO visibility so people searching "técnico PC Barquisimeto" land here rather than a competitor.
+Convert site visitors into clients. The landing page is the entire front door of the business. Success means a potential client feeling confident enough to tap the WhatsApp button. Secondary purpose: SEO visibility so people searching for "sistemas y automatizacion Barquisimeto" or "auditoria de seguridad web" land here first; "tecnico PC Barquisimeto" remains a secondary search target.
 
 ## Brand Personality
 
